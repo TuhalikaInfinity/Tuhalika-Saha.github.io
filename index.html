@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuhalika Saha | Academic Portfolio</title>
+  <meta name="description" content="Tuhalika Saha, M.Sc. student in Computer Science (Data Science). Research on interpretable machine learning for graph-structured and biomedical data. Seeking a PhD position." />
+  <meta name="author" content="Tuhalika Saha" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tuhalika Saha | Academic Portfolio" />
+  <meta property="og:description" content="Interpretable machine learning for graph-structured and biomedical data. Publications, research, and CV." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tuhalika Saha | Academic Portfolio" />
+  <meta name="twitter:description" content="Interpretable machine learning for graph-structured and biomedical data." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d3866'/><text x='50' y='66' font-size='46' text-anchor='middle' fill='white' font-family='Georgia,serif' font-weight='700'>TS</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0b1220',
+            navy: { 50:'#f4f6fb', 100:'#e6ebf5', 200:'#c9d3e8', 300:'#9fb0d3', 600:'#2a4a80', 700:'#1d3866', 800:'#14284b', 900:'#0d1d3a', 950:'#08122a' },
+            accent: { 50:'#eef4ff', 100:'#dce8ff', 200:'#bcd2ff', 400:'#5b8def', 500:'#3b73e8', 600:'#2a5cd0', 700:'#2149a8' },
+            gold: { 400:'#d9b26a', 500:'#c79a49' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', '"Source Serif 4"', 'Georgia', 'serif'],
+            body: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(13,29,58,.04), 0 8px 24px -12px rgba(13,29,58,.12)',
+            lift: '0 2px 4px rgba(13,29,58,.04), 0 24px 48px -20px rgba(33,73,168,.30)',
+            glow: '0 10px 30px -8px rgba(59,115,232,.55)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #fbfcfe; color: #3b4559; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.01em; }
+    .pub-title, .thesis-title { font-family: 'Playfair Display', Georgia, serif; }
+    .prose-body { font-family: 'Source Serif 4', Georgia, serif; }
+    section { scroll-margin-top: 4.5rem; }
+    ::selection { background: #bcd2ff; color: #0d1d3a; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #3b73e8; outline-offset: 3px; border-radius: 6px; }
+
+    /* Subtle paper grid backdrop */
+    .bg-grid {
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(29,56,102,.08) 1px, transparent 0);
+      background-size: 26px 26px;
+    }
+
+    /* Section heading */
+    .eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #2a5cd0; }
+    .heading-rule { display:flex; align-items:center; gap:.75rem; margin-top:.9rem; }
+    .heading-rule::before { content:''; width:44px; height:3px; border-radius:99px; background: linear-gradient(90deg,#3b73e8,#c79a49); }
+
+    /* Cards */
+    .card {
+      position: relative;
+      background: #fff;
+      border: 1px solid #e6ebf5;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(13,29,58,.04), 0 8px 24px -14px rgba(13,29,58,.14);
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+      overflow: hidden;
+    }
+    .card::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background: linear-gradient(180deg,#3b73e8,#c79a49);
+      opacity:0; transition: opacity .35s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: #bcd2ff; box-shadow: 0 2px 4px rgba(13,29,58,.04), 0 28px 50px -22px rgba(33,73,168,.32); }
+    .card:hover::before { opacity:1; }
+
+    /* Buttons / chips */
+    .btn-outline {
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.55rem 1.05rem; border-radius:10px; font-size:.85rem; font-weight:600;
+      color:#2a5cd0; background:#fff; border:1px solid #bcd2ff;
+      transition: all .25s ease;
+    }
+    .btn-outline .arrow { transition: transform .25s ease; }
+    .btn-outline:hover { background:#2a5cd0; color:#fff; border-color:#2a5cd0; box-shadow: 0 10px 22px -10px rgba(42,92,208,.7); transform: translateY(-1px); }
+    .btn-outline:hover .arrow { transform: translateX(4px); }
+    .btn-disabled { display:inline-flex; align-items:center; padding:.55rem 1.05rem; border-radius:10px; font-size:.85rem; font-weight:600; color:#9aa5bb; background:#f4f6fb; border:1px dashed #d3dbea; cursor:not-allowed; }
+
+    .contact-pill {
+      display:inline-flex; align-items:center; gap:.55rem; padding:.6rem 1.05rem;
+      border-radius:999px; font-size:.85rem; font-weight:500; color:#14284b;
+      background: rgba(255,255,255,.85); border:1px solid #dbe3f2; backdrop-filter: blur(6px);
+      box-shadow: 0 1px 2px rgba(13,29,58,.04);
+      transition: all .25s ease;
+    }
+    .contact-pill:hover { color:#2a5cd0; border-color:#5b8def; transform: translateY(-2px); box-shadow: 0 12px 22px -12px rgba(42,92,208,.5); background:#fff; }
+
+    .tag {
+      padding:.5rem 1.05rem; border-radius:999px; font-size:.85rem; font-weight:500;
+      color:#21407a; background: linear-gradient(180deg,#fff,#f1f6ff); border:1px solid #d6e3fb;
+      transition: all .25s ease; cursor:default;
+    }
+    .tag:hover { color:#fff; background: linear-gradient(135deg,#2a5cd0,#14284b); border-color:transparent; transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(20,40,75,.6); }
+
+    .chip { padding:.32rem .75rem; font-size:.8rem; font-weight:500; border-radius:8px; color:#1d3866; background:#f1f5fc; border:1px solid #e0e8f6; transition: all .2s ease; }
+    .chip:hover { background:#dce8ff; border-color:#bcd2ff; color:#14284b; }
+
+    .badge { font-size:.68rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:.3rem .65rem; border-radius:999px; white-space:nowrap; }
+
+    /* Nav */
+    .nav-link { position:relative; padding:.35rem 0; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; left:0; right:0; bottom:-2px; height:2px; border-radius:2px; background:linear-gradient(90deg,#3b73e8,#c79a49); transform:scaleX(0); transform-origin:left; transition: transform .3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
+    .nav-link.active { color:#14284b; }
+    #scrollbar { position:fixed; top:0; left:0; height:3px; width:0; z-index:60; background:linear-gradient(90deg,#3b73e8,#c79a49); }
+
+    /* Hero */
+    .hero-bg {
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(91,141,239,.22), transparent 60%),
+        radial-gradient(700px 380px at 0% 0%, rgba(199,154,73,.13), transparent 60%),
+        linear-gradient(180deg,#f4f7fd 0%, #fbfcfe 100%);
+    }
+    .name-gradient { background: linear-gradient(120deg,#0d1d3a 20%,#2a5cd0 75%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .photo-ring { background: conic-gradient(from 140deg,#3b73e8,#c79a49,#14284b,#3b73e8); }
+    @keyframes floaty { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
+    .floaty { animation: floaty 7s ease-in-out infinite; }
+
+    /* Timeline */
+    .tl-dot { position:absolute; left:-9px; top:1.7rem; width:18px; height:18px; border-radius:50%; background:#fff; border:4px solid #3b73e8; box-shadow:0 0 0 5px rgba(59,115,232,.15); }
+
+    /* Reveal */
+    .reveal { opacity:0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity:1; transform:none; }
+    .stagger > * { opacity:0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .stagger.visible > * { opacity:1; transform:none; }
+    .stagger.visible > *:nth-child(1){transition-delay:.04s} .stagger.visible > *:nth-child(2){transition-delay:.12s}
+    .stagger.visible > *:nth-child(3){transition-delay:.20s} .stagger.visible > *:nth-child(4){transition-delay:.28s}
+    .stagger.visible > *:nth-child(5){transition-delay:.36s}
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      .reveal, .stagger > * { opacity:1; transform:none; transition:none; }
+      .floaty { animation:none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="scrollbar"></div>
+
+  <!-- NAVIGATION -->
+  <header id="siteHeader" class="sticky top-0 z-50 transition-all duration-300 bg-white/70 backdrop-blur-xl border-b border-transparent">
+    <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2.5 group">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-navy-900 to-accent-600 text-white grid place-items-center font-serif font-bold text-sm shadow-md group-hover:shadow-glow transition">TS</span>
+        <span class="font-serif text-lg font-bold text-navy-900 tracking-tight">Tuhalika Saha</span>
+      </a>
+      <ul class="hidden lg:flex items-center gap-7 text-[13px] font-medium text-slate-500">
+        <li><a class="nav-link hover:text-navy-900" href="#about">About</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#publications">Publications</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#research">Research</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#education">Education</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#skills">Skills</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#experience">Experience</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#achievements">Achievements</a></li>
+        <li><a class="nav-link hover:text-navy-900" href="#contact">Contact</a></li>
+      </ul>
+      <button id="menuBtn" class="lg:hidden p-2 rounded-lg text-navy-900 hover:bg-navy-50 transition" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-navy-100 bg-white/95 backdrop-blur-xl">
+      <ul class="px-5 py-3 grid grid-cols-2 gap-1 text-sm font-medium text-slate-700">
+        <li><a class="block py-2.5 hover:text-accent-600" href="#about">About</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#publications">Publications</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#research">Research</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#education">Education</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#skills">Skills</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#experience">Experience</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#achievements">Achievements</a></li>
+        <li><a class="block py-2.5 hover:text-accent-600" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO -->
+    <section id="home" class="hero-bg relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid opacity-60 [mask-image:linear-gradient(180deg,#000,transparent_85%)]"></div>
+      <div class="relative max-w-6xl mx-auto px-5 py-16 md:py-28 flex flex-col-reverse md:flex-row items-center gap-14 md:gap-20">
+        <div class="flex-1 text-center md:text-left reveal">
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
+            <span class="h-px w-10 bg-gradient-to-r from-accent-500 to-gold-500"></span>
+            <span class="eyebrow">Computer Science &middot; Data Science &middot; AI</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] name-gradient">Tuhalika Saha</h1>
+          <p class="mt-5 text-lg md:text-xl text-navy-700 font-serif font-medium leading-snug">Aspiring PhD Student in Computer Science <span class="text-gold-500 mx-1">|</span> Data Science &amp; AI</p>
+          <p class="mt-3 text-slate-500 text-[15px]">Department of Computer Science, American International University&ndash;Bangladesh (AIUB)</p>
+          <p class="mt-4 max-w-xl mx-auto md:mx-0 prose-body italic text-[1.08rem] leading-relaxed text-slate-600">Interpretable machine learning for graph-structured and biomedical data.</p>
+
+          <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-3">
+            <a href="mailto:thesahatuhalika@gmail.com" class="contact-pill" title="Primary email">
+              <svg class="w-4 h-4 text-accent-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Primary Email
+            </a>
+            <a href="https://www.linkedin.com/in/tuhalika/" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.54h.05c.53-1 1.83-2.04 3.77-2.04 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4V9.75Z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=3vkrT9EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2 1 9l11 7 9-5.7V17h2V9L12 2Zm-6 11.5V17c0 2.2 2.7 4 6 4s6-1.8 6-4v-3.5L12 18l-6-4.5Z"/></svg>
+              Google Scholar
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-3">
+            <a href="assets/Tuhalika_Saha_CV.pdf" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-br from-navy-900 to-navy-700 text-white text-sm font-semibold shadow-lg hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300">
+              <svg class="w-4 h-4 group-hover:translate-y-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14"/></svg>
+              Download CV
+            </a>
+            <a href="#publications" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-navy-900 text-sm font-semibold border border-navy-200 hover:border-accent-400 hover:text-accent-600 hover:-translate-y-0.5 transition-all duration-300">
+              View Publications
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile photo placeholder: replace src with your own image (e.g., assets/profile.jpg) -->
+        <div class="reveal shrink-0 relative">
+          <div class="absolute -inset-6 rounded-full bg-gradient-to-br from-accent-200/50 to-gold-400/20 blur-2xl"></div>
+          <div class="floaty relative w-56 h-56 md:w-72 md:h-72 rounded-full p-[5px] photo-ring shadow-2xl">
+            <div class="w-full h-full rounded-full p-1.5 bg-white">
+              <div class="w-full h-full rounded-full overflow-hidden bg-navy-100 flex items-center justify-center">
+                <img src="assets/profile.jpg" alt="Portrait of Tuhalika Saha" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="hidden w-full h-full items-center justify-center bg-gradient-to-br from-navy-100 to-accent-100 text-navy-700 font-serif text-7xl font-bold">TS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 2. ABOUT -->
+    <section id="about" class="py-20 md:py-28">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Profile</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">About</h2>
+        <div class="heading-rule"></div>
+
+        <div class="mt-10 grid lg:grid-cols-5 gap-10">
+          <div class="lg:col-span-3 prose-body text-[1.12rem] leading-[1.85] text-slate-700">
+            <p class="first-letter:font-serif first-letter:text-5xl first-letter:font-bold first-letter:text-navy-900 first-letter:float-left first-letter:mr-3 first-letter:leading-[0.9] first-letter:mt-1">
+              I am an M.Sc. student in Computer Science (Data Science) at AIUB, working on interpretable machine learning for graph-structured and biomedical data. My research spans complex network analysis, spatial transcriptomics, and clinical risk prediction, with a focus on methods that are accurate, data-efficient, and transparent to domain experts. I am seeking a PhD position to continue this work.
+            </p>
+          </div>
+
+          <aside class="lg:col-span-2">
+            <div class="card p-7 bg-gradient-to-br from-white to-navy-50">
+              <h3 class="text-xl font-semibold text-navy-900">Research Interests</h3>
+              <div class="mt-5 flex flex-wrap gap-2.5">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Interpretable AI</span>
+                <span class="tag">Graph Neural Networks</span>
+                <span class="tag">Complex Networks</span>
+                <span class="tag">Spatial Transcriptomics</span>
+                <span class="tag">Healthcare AI</span>
+                <span class="tag">Visual Analytics</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2b. RESEARCH FOCUS -->
+    <section id="focus" class="py-20 md:py-28 bg-gradient-to-b from-navy-50 to-white border-y border-navy-100/70">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Direction</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Research Focus</h2>
+        <div class="heading-rule"></div>
+        <p class="mt-6 max-w-2xl prose-body text-lg text-slate-700 leading-relaxed">Three threads connect my work: methods that explain their predictions, methods that exploit graph structure, and methods that learn well from limited labels.</p>
+
+        <div class="mt-10 grid gap-7 md:grid-cols-3">
+          <article class="card p-7 flex flex-col">
+            <h3 class="text-xl font-semibold text-navy-900 leading-snug">Interpretable ML for Healthcare</h3>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Domain-aware ensembles with SHAP explanations that expose the clinical, psychological, and social factors behind a risk prediction.</p>
+            <p class="mt-auto pt-5 text-sm text-slate-500">Postpartum depression risk (submitted); heart disease prediction (ICERECT 2025)</p>
+          </article>
+          <article class="card p-7 flex flex-col">
+            <h3 class="text-xl font-semibold text-navy-900 leading-snug">Graph Methods &amp; Complex Networks</h3>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Direction-aware, BFS-based descriptors for analyzing, comparing, and visualizing real-world networks.</p>
+            <p class="mt-auto pt-5 text-sm text-slate-500">DCensus (submitted to Applied Network Science)</p>
+          </article>
+          <article class="card p-7 flex flex-col">
+            <h3 class="text-xl font-semibold text-navy-900 leading-snug">Label-Efficient Spatial Transcriptomics</h3>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Lightweight graph convolutional networks that identify spatial domains from scribble annotations and stay robust to label noise.</p>
+            <p class="mt-auto pt-5 text-sm text-slate-500">ScribbleST (manuscript in preparation)</p>
+          </article>
+        </div>
+
+        <p class="mt-8 text-sm text-slate-500">Also: visual analytics for climate and environmental trends (Master&rsquo;s thesis) and satellite-based analysis of dengue risk (ongoing).</p>
+      </div>
+    </section>
+
+    <!-- 4. PUBLICATIONS -->
+    <section id="publications" class="py-20 md:py-28">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Scholarly Output</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Publications</h2>
+        <div class="heading-rule"></div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="badge bg-emerald-50 text-emerald-700 border border-emerald-200">2 Published</span>
+          <span class="badge bg-amber-50 text-amber-700 border border-amber-200">2 Under review</span>
+          <span class="badge bg-accent-50 text-accent-700 border border-accent-100">2 In progress</span>
+        </div>
+
+        <!-- Published -->
+        <h3 class="mt-12 flex items-center gap-3 text-xl font-semibold text-navy-900">
+          <span class="relative flex w-3 h-3"><span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span><span class="relative inline-flex w-3 h-3 rounded-full bg-emerald-500"></span></span>
+          Published
+        </h3>
+        <div class="mt-6 space-y-6">
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;Application of Artificial Intelligence in Detecting and Mitigating Cyber Threats&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">International Research Journal of Innovations in Engineering and Technology (IRJIET), January 2025</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">This work surveys artificial intelligence and machine learning applications for cyber threat detection, malware and phishing identification, and automated threat mitigation.</p>
+            <a href="https://irjiet.com/Volume-9/Issue-1-January-2025/Application-of-Artificial-Intelligence-in-Detecting-and-Mitigating-Cyber-Threats/2506" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Paper <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;Predicting Heart Disease with Machine Learning: A Comparative Analysis of Multiple Models&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">Fifth International Conference on Emerging Research in Electronics, Computer Science and Technology (ICERECT), September 2025; technically sponsored by IEEE Bangalore Section</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">This study compares Logistic Regression, Random Forest, Support Vector Machine, and Decision Tree models for heart disease prediction using clinical data and standard performance metrics.</p>
+            <a href="https://ieeexplore.ieee.org/document/11379737" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Paper <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+
+        <!-- Under Review -->
+        <h3 class="mt-14 flex items-center gap-3 text-xl font-semibold text-navy-900">
+          <span class="inline-block w-3 h-3 rounded-full bg-amber-500"></span> Under Review / Submitted
+        </h3>
+        <div class="mt-6 space-y-6">
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;DCensus: Directed Census Invariant Descriptors for Real-World Complex Networks&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">Submitted to Springer Applied Network Science</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">We develop DCensus, a direction-aware graph analysis framework that employs BFS-based descriptors to analyze, compare, and visualize real-world complex networks.</p>
+            <a href="https://drive.google.com/file/d/1LWK2PKJ12r4aZ5vxxWqOFC79zI8CT7sX/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Paper <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;Disentangling Postpartum Depression Risk: A Domain-Aware Hierarchical Ensemble Approach for Interpretable Clinical Decision Support&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">Submitted to Springer Nature Switzerland AG</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">This work proposes a domain-aware hierarchical stacking ensemble combining XGBoost, Logistic Regression, and SHAP to predict postpartum depression risk and to interpret the principal clinical, psychological, and social factors.</p>
+            <a href="https://drive.google.com/file/d/1h9N_UH9afDfGBVIMDuvKN_KpdUj7IjIi/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Paper <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+
+        <!-- In Progress -->
+        <h3 class="mt-14 flex items-center gap-3 text-xl font-semibold text-navy-900">
+          <span class="inline-block w-3 h-3 rounded-full bg-accent-500"></span> In Progress
+        </h3>
+        <div class="mt-6 space-y-6">
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;ScribbleST: Scribble-Supervised Spatial Domain Identification via Graph Convolutional Networks&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">Manuscript in preparation, 2026</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">We develop ScribbleST, a lightweight graph convolutional network framework for spatial domain identification in spatial transcriptomics, evaluating annotation strategies and robustness to label noise to improve accuracy under minimal supervision.</p>
+            <a href="https://drive.google.com/file/d/1mTCM8J_JA62LfShBjB1QdFu1MAfPyoPq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Paper <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="card p-7">
+            <!-- Optional: add <p class="mt-1 text-sm text-slate-500">Authors: ...</p> here -->
+            <h4 class="pub-title text-xl font-bold text-navy-900 leading-snug">&ldquo;Satellite-Based Data Analysis of Stagnant Water Density and Its Correlation with Dengue Infection&rdquo;</h4>
+            <p class="mt-2 text-sm text-accent-700 font-medium">Ongoing research, 2026</p>
+            <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">This project investigates satellite-derived measures of stagnant water distribution and examines their potential correlation with dengue infection patterns.</p>
+            <span class="btn-disabled mt-5" aria-disabled="true" title="Manuscript not yet available">View Paper &mdash; Coming Soon</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. RESEARCH EXPERIENCE & THESIS -->
+    <section id="research" class="py-20 md:py-28 bg-gradient-to-b from-navy-50 to-white border-y border-navy-100/70">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Theses</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Research Experience &amp; Thesis</h2>
+        <div class="heading-rule"></div>
+
+        <div class="mt-10 space-y-7">
+          <article class="card p-7 md:p-8">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 class="text-2xl font-semibold text-navy-900">Master&rsquo;s Thesis</h3>
+              <span class="badge bg-accent-50 text-accent-700 border border-accent-100">Ongoing</span>
+            </div>
+            <p class="mt-1 text-sm text-slate-500">September 2026 &ndash; May 2027 &middot; AIUB</p>
+            <h4 class="thesis-title mt-4 text-xl font-bold text-navy-900 leading-snug">&ldquo;An Intelligent Visual Analytics Framework for Climate Change and Environmental Trend Analysis&rdquo;</h4>
+            <p class="mt-3 prose-body text-[1.05rem] leading-relaxed text-slate-700">This thesis proposes an intelligent visual analytics framework that integrates machine learning, statistical analysis, and interactive dashboards to analyze climate change and environmental trends.</p>
+            <p class="mt-5 pt-4 border-t border-navy-100 text-sm text-slate-600"><span class="font-semibold text-navy-900">Supervisor:</span> Dr. Mohammad Rabiul Islam, Assistant Professor, Department of Computer Science, AIUB</p>
+          </article>
+
+          <article class="card p-7 md:p-8">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 class="text-2xl font-semibold text-navy-900">Undergraduate Thesis</h3>
+              <span class="badge bg-amber-50 text-amber-700 border border-amber-200 inline-flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>
+                Nominated for Best Thesis Award
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-slate-500">September 2021 &ndash; December 2022 &middot; AIUB</p>
+            <h4 class="thesis-title mt-4 text-xl font-bold text-navy-900 leading-snug">&ldquo;Faceted Metadata Search with Formal Concept Analysis in the E-Com Framework&rdquo;</h4>
+            <p class="mt-3 prose-body text-[1.05rem] leading-relaxed text-slate-700">This thesis designed and evaluated a faceted metadata search interface for e-commerce based on Formal Concept Analysis, employing usability testing and survey-based analysis to improve product discovery and search navigation.</p>
+            <p class="mt-5 pt-4 border-t border-navy-100 text-sm text-slate-600"><span class="font-semibold text-navy-900">Supervisor:</span> Dr. Khandakar Tabin Hasan, Professor and Associate Dean (Graduate Program), AIUB</p>
+            <a href="https://drive.google.com/file/d/1cmHa-9Pyyxv6po6zG4NET4GISIaN6aA9/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Thesis <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. EDUCATION -->
+    <section id="education" class="py-20 md:py-28">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Academic Background</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Education</h2>
+        <div class="heading-rule"></div>
+
+        <div class="mt-10 grid gap-7 md:grid-cols-2">
+          <article class="card p-7">
+            <div class="flex items-start justify-between gap-3">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-accent-50 to-accent-100 text-accent-700 grid place-items-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>
+              </div>
+              <span class="badge bg-accent-50 text-accent-700 border border-accent-100">In Progress</span>
+            </div>
+            <h3 class="mt-5 text-2xl font-semibold text-navy-900 leading-snug">M.Sc. in Computer Science</h3>
+            <p class="mt-1 text-accent-600 font-medium">Data Science Specialization</p>
+            <p class="mt-3 text-slate-600">American International University&ndash;Bangladesh (AIUB)</p>
+            <dl class="mt-6 text-sm divide-y divide-navy-100 border-t border-navy-100">
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">Expected Graduation</dt><dd class="font-semibold text-navy-900">May 2027</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">CGPA</dt><dd class="font-semibold text-navy-900">3.55 / 4.00</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">Medium of Instruction</dt><dd class="font-semibold text-navy-900">English</dd></div>
+            </dl>
+          </article>
+
+          <article class="card p-7">
+            <div class="flex items-start justify-between gap-3">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-navy-50 to-navy-100 text-navy-700 grid place-items-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>
+              </div>
+              <span class="badge bg-slate-100 text-slate-600 border border-slate-200">Completed</span>
+            </div>
+            <h3 class="mt-5 text-2xl font-semibold text-navy-900 leading-snug">B.Sc. in Computer Science and Engineering</h3>
+            <p class="mt-1 text-accent-600 font-medium">Computer Science and Engineering</p>
+            <p class="mt-3 text-slate-600">American International University&ndash;Bangladesh (AIUB)</p>
+            <dl class="mt-6 text-sm divide-y divide-navy-100 border-t border-navy-100">
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">Graduated</dt><dd class="font-semibold text-navy-900">March 2023</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">CGPA</dt><dd class="font-semibold text-navy-900">3.68 / 4.00</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-slate-500">Medium of Instruction</dt><dd class="font-semibold text-navy-900">English</dd></div>
+            </dl>
+          </article>
+        </div>
+
+        <h3 class="mt-16 text-2xl font-semibold text-navy-900">Standardized Test Scores</h3>
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="card p-6">
+            <p class="eyebrow">TOEFL iBT</p>
+            <p class="mt-2 font-serif text-5xl font-bold text-navy-900 leading-none">90<span class="text-base font-medium text-slate-400 font-sans"> / 120</span></p>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">Section bands (0&ndash;6 scale): Listening 5.0 &middot; Reading 6.0 &middot; Writing 4.0 &middot; Speaking 3.5 &middot; Overall band 4.5</p>
+            <p class="mt-2 text-xs text-slate-400">Taken January 28, 2026</p>
+          </div>
+          <div class="card p-6">
+            <p class="eyebrow">GRE General Test</p>
+            <p class="mt-2 font-serif text-5xl font-bold text-navy-900 leading-none">322<span class="text-base font-medium text-slate-400 font-sans"> / 340</span></p>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">Verbal 165 &middot; Quantitative 157 &middot; Analytical Writing 4.0</p>
+            <p class="mt-2 text-xs text-slate-400">Taken March 2, 2025</p>
+          </div>
+          <div class="card p-6">
+            <p class="eyebrow">IELTS Academic</p>
+            <p class="mt-2 font-serif text-5xl font-bold text-navy-900 leading-none">7.0<span class="text-base font-medium text-slate-400 font-sans"> / 9.0</span></p>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">Listening 7.0 &middot; Reading 7.5 &middot; Writing 6.5 &middot; Speaking 7.0</p>
+            <p class="mt-2 text-xs text-slate-400">Taken October 21, 2023 (earlier test)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SKILLS -->
+    <section id="skills" class="py-20 md:py-28 bg-gradient-to-b from-navy-50 to-white border-y border-navy-100/70">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Competencies</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Skills</h2>
+        <div class="heading-rule"></div>
+
+        <div class="mt-10 grid gap-7 md:grid-cols-2">
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Programming Languages</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C / C++</span><span class="chip">SQL</span>
+              <span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">LaTeX</span>
+            </div>
+          </div>
+
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Machine Learning &amp; Data Science</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="chip">Logistic Regression</span><span class="chip">Random Forest</span><span class="chip">SVM</span><span class="chip">Decision Trees</span>
+              <span class="chip">XGBoost</span><span class="chip">Hierarchical Ensembles</span><span class="chip">SHAP Interpretability</span><span class="chip">Graph Convolutional Networks</span>
+            </div>
+          </div>
+
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Research &amp; Academic Skills</h3>
+            <ul class="mt-5 space-y-2.5 text-slate-700 text-[15px]">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span>Literature review and research problem formulation</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span>Experimental design and comparative analysis</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span>Result interpretation and academic writing</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span>Manuscript preparation and revision for journals and conferences</li>
+            </ul>
+          </div>
+
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Tools &amp; Visualization</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="chip">Power BI</span><span class="chip">Microsoft Excel</span><span class="chip">Google Sheets</span><span class="chip">MATLAB</span>
+              <span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">Figma</span>
+            </div>
+          </div>
+
+          <div class="card p-7 md:col-span-2">
+            <h3 class="text-xl font-semibold text-navy-900">Languages</h3>
+            <div class="mt-5 grid sm:grid-cols-3 gap-4 text-sm">
+              <div class="rounded-xl bg-gradient-to-br from-navy-50 to-white border border-navy-100 px-5 py-4"><p class="font-semibold text-navy-900 text-base">English</p><p class="text-slate-600 mt-0.5">Full Professional Proficiency</p></div>
+              <div class="rounded-xl bg-gradient-to-br from-navy-50 to-white border border-navy-100 px-5 py-4"><p class="font-semibold text-navy-900 text-base">Bangla</p><p class="text-slate-600 mt-0.5">Native</p></div>
+              <div class="rounded-xl bg-gradient-to-br from-navy-50 to-white border border-navy-100 px-5 py-4"><p class="font-semibold text-navy-900 text-base">Hindi</p><p class="text-slate-600 mt-0.5">Conversational</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. EXPERIENCE -->
+    <section id="experience" class="py-20 md:py-28">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Career</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Professional &amp; Teaching Experience</h2>
+        <div class="heading-rule"></div>
+
+        <ol class="mt-12 relative border-l-2 border-navy-200 ml-2.5 space-y-8">
+          <li class="ml-8 relative">
+            <span class="tl-dot"></span>
+            <div class="card p-7">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <h3 class="text-xl font-semibold text-navy-900">Information Technology Specialist</h3>
+                <span class="badge bg-navy-50 text-navy-700 border border-navy-100">Jan 2024 &ndash; Dec 2024 &middot; Part-Time</span>
+              </div>
+              <p class="mt-1 text-accent-600 font-medium">Bangladesh Space Research Society (BSRS)</p>
+              <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Designed user interfaces for event web pages and social media visuals using Figma, and collaborated with the team on digital outreach.</p>
+              <a href="https://drive.google.com/file/d/1YbGkU9f8SlD6ajekoPhooIwf_a7tqWYQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Credential <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </li>
+
+          <li class="ml-8 relative">
+            <span class="tl-dot"></span>
+            <div class="card p-7">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <h3 class="text-xl font-semibold text-navy-900">Junior UI/UX Designer (Intern)</h3>
+                <span class="badge bg-navy-50 text-navy-700 border border-navy-100">Nov 2021 &ndash; Nov 2023 &middot; Full-Time</span>
+              </div>
+              <p class="mt-1 text-accent-600 font-medium">ShellBeeHaken Ltd. (SBH), Dhaka, Bangladesh</p>
+              <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Produced wireframes, UI/UX designs, prototypes, and documentation for websites and applications using Figma; contributed to project planning, data analysis, client feedback sessions, team collaboration, and presentations.</p>
+              <a href="https://drive.google.com/file/d/1JcAjQ6VDLQHMAMA-hmgli_5yBRLnO0J3/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Credential <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </li>
+
+          <li class="ml-8 relative">
+            <span class="tl-dot" style="border-color:#1d3866; box-shadow:0 0 0 5px rgba(29,56,102,.12)"></span>
+            <div class="card p-7">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <h3 class="text-xl font-semibold text-navy-900">Undergraduate AI Lab Assistant</h3>
+                <span class="badge bg-navy-50 text-navy-700 border border-navy-100">May 2021 &ndash; Aug 2021 &middot; Internship</span>
+              </div>
+              <p class="mt-1 text-accent-600 font-medium">Department of Computer Science, AIUB</p>
+              <p class="mt-3 prose-body text-[1.02rem] leading-relaxed text-slate-700">Supported laboratory instruction in Python, data management, and spreadsheets; assisted with lectures and provided student support. Supervisor: Sajib Hasan, Assistant Professor, AIUB.</p>
+              <a href="https://drive.google.com/file/d/1TxeXBfsk-HGD3rfG-SGC0it-n1Y1gdG/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline mt-5">View Credential <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 8. LEADERSHIP, AWARDS & ACHIEVEMENTS -->
+    <section id="achievements" class="py-20 md:py-28 bg-gradient-to-b from-navy-50 to-white border-y border-navy-100/70">
+      <div class="max-w-5xl mx-auto px-5 reveal">
+        <p class="eyebrow">Recognition</p>
+        <h2 class="mt-2 text-4xl font-bold text-navy-900">Leadership, Awards &amp; Achievements</h2>
+        <div class="heading-rule"></div>
+
+        <h3 class="mt-12 text-2xl font-semibold text-navy-900">Leadership &amp; Volunteering</h3>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <article class="card p-6">
+            <h4 class="font-semibold text-navy-900 text-lg leading-snug">Assistant General Secretary, Debater &amp; Public Speaker</h4>
+            <p class="mt-1 text-sm text-accent-600 font-medium">AIUB Oratory Club (AOC) &middot; Jan 2018 &ndash; Jan 2023</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-700">Organized numerous events, including the AIUB AOC Open National Debate Fest; competed in national debate competitions and earned multiple medals and trophies. National Television Debate Champion.</p>
+          </article>
+          <article class="card p-6">
+            <h4 class="font-semibold text-navy-900 text-lg leading-snug">Member &amp; Volunteer</h4>
+            <p class="mt-1 text-sm text-accent-600 font-medium">AIUB Computer Club (ACC) &middot; Nov 2018 &ndash; Jan 2023</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-700">Coordinated and participated in seminars, events, and competitions, including AIUB Cyber Gaming Fest 2019 and the Computer Science Festival (CS Fest).</p>
+          </article>
+          <article class="card p-6">
+            <h4 class="font-semibold text-navy-900 text-lg leading-snug">Member &amp; Volunteer</h4>
+            <p class="mt-1 text-sm text-accent-600 font-medium">IEEE AIUB Student Branch &middot; Nov 2018 &ndash; Dec 2020</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-700">Participated in seminars, competitions, and events, including AIUB IEEE Day 2017 and 2018 and club orientation programs.</p>
+          </article>
+          <article class="card p-6">
+            <h4 class="font-semibold text-navy-900 text-lg leading-snug">Event Organizer Volunteer</h4>
+            <p class="mt-1 text-sm text-accent-600 font-medium">Bangladesh Innovation Forum &middot; Dec 2019</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-700">Contributed to the organization of VR CON 2019, the first conference of its kind in Bangladesh, hosted at AIUB.</p>
+          </article>
+        </div>
+
+        <div class="mt-14 grid gap-7 md:grid-cols-2">
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Awards &amp; Scholarships</h3>
+            <ul class="mt-5 space-y-3 text-slate-700 text-[15px]">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0"></span>AIUB Academic Scholarship for Regular Students</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0"></span>AIUB Club Scholarships (Extracurricular)</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0"></span>Champion (Team AOC), UCB Public Parliament Debate Competition</li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0"></span>First Runner-up, AIUB Oratory Club Public Speaking Competition</li>
+            </ul>
+          </div>
+
+          <div class="card p-7">
+            <h3 class="text-xl font-semibold text-navy-900">Course Certifications</h3>
+            <ul class="mt-5 space-y-3 text-slate-700 text-[15px]">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>&ldquo;Foundations: Data, Data, Everywhere&rdquo; &mdash; Google <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://coursera.org/share/4a7222663c1735027da581dd60ea0327" target="_blank" rel="noopener noreferrer">(Coursera Credential)</a></span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>&ldquo;Ask Questions to Make Data-Driven Decisions&rdquo; &mdash; Google <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://coursera.org/share/77167c12cdeb69b32a24bee83cbf2f42" target="_blank" rel="noopener noreferrer">(Coursera Credential)</a></span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>&ldquo;Data Science in Real Life&rdquo; &mdash; Johns Hopkins University <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://coursera.org/share/9efe429cfb7407874cb85f698b2218d7" target="_blank" rel="noopener noreferrer">(Coursera Credential)</a></span></li>
+            </ul>
+          </div>
+
+          <div class="card p-7 md:col-span-2">
+            <h3 class="text-xl font-semibold text-navy-900">Conferences, Workshops &amp; Events</h3>
+            <ul class="mt-5 space-y-3 text-slate-700 text-[15px]">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>Women&rsquo;s Mathematics Olympiad 2019 (competition) &mdash; Women&rsquo;s Mathematics Olympiad Committee and A F Mujibur Rahman Foundation <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://drive.google.com/file/d/1LXQtIuZU2reikKF0ZzVG9NszslL48NBz/view?usp=drive_link" target="_blank" rel="noopener noreferrer">(Credential)</a></span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>Cyber Crime Awareness Campaign and Seminar &mdash; Cyber Crime Awareness Foundation with Manusher Jonno Foundation <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://drive.google.com/file/d/1hiQtzVHN1157k0P6CtkV0JHnPatL-0oD/view?usp=drive_link" target="_blank" rel="noopener noreferrer">(Credential)</a></span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>ECO FEST 2019 &mdash; AIUB <a class="text-accent-600 font-medium hover:underline underline-offset-4 text-sm" href="https://drive.google.com/file/d/1zBp1uRG-8iv-NQBsefkPkc9jW6GaEEb1/view?usp=drive_link" target="_blank" rel="noopener noreferrer">(Credential)</a></span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0"></span><span>VR CON 2019 &mdash; Bangladesh Innovation Forum (Event Organizer Volunteer)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 9. CONTACT / FOOTER -->
+  <footer id="contact" class="relative bg-navy-950 text-slate-300 scroll-mt-16 overflow-hidden">
+    <div class="absolute inset-0 opacity-70" style="background: radial-gradient(700px 320px at 90% 0%, rgba(59,115,232,.28), transparent 60%), radial-gradient(600px 300px at 0% 100%, rgba(199,154,73,.14), transparent 60%);"></div>
+    <div class="relative max-w-5xl mx-auto px-5 py-20">
+      <p class="eyebrow !text-gold-400">Get in Touch</p>
+      <h2 class="mt-2 text-4xl font-bold text-white">Contact</h2>
+      <div class="heading-rule"></div>
+      <p class="mt-6 max-w-2xl prose-body text-lg text-slate-300 leading-relaxed">I welcome correspondence from prospective advisors, collaborators, and admissions committees regarding doctoral opportunities.</p>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2">
+        <a href="mailto:thesahatuhalika@gmail.com" class="group rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur hover:bg-white/10 hover:border-accent-400 hover:-translate-y-1 transition-all duration-300">
+          <p class="text-[11px] uppercase tracking-[.2em] text-accent-200/70">Primary Email</p>
+          <p class="mt-2 text-white font-medium break-all group-hover:text-accent-100">thesahatuhalika@gmail.com</p>
+        </a>
+        <a href="mailto:25-93857-3@student.aiub.edu" class="group rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur hover:bg-white/10 hover:border-accent-400 hover:-translate-y-1 transition-all duration-300">
+          <p class="text-[11px] uppercase tracking-[.2em] text-accent-200/70">University Email</p>
+          <p class="mt-2 text-white font-medium break-all group-hover:text-accent-100">25-93857-3@student.aiub.edu</p>
+        </a>
+        <a href="https://www.linkedin.com/in/tuhalika/" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur hover:bg-white/10 hover:border-accent-400 hover:-translate-y-1 transition-all duration-300">
+          <p class="text-[11px] uppercase tracking-[.2em] text-accent-200/70">LinkedIn</p>
+          <p class="mt-2 text-white font-medium break-all group-hover:text-accent-100">linkedin.com/in/tuhalika</p>
+        </a>
+        <a href="https://scholar.google.com/citations?user=3vkrT9EAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur hover:bg-white/10 hover:border-accent-400 hover:-translate-y-1 transition-all duration-300">
+          <p class="text-[11px] uppercase tracking-[.2em] text-accent-200/70">Google Scholar</p>
+          <p class="mt-2 text-white font-medium group-hover:text-accent-100">Google Scholar Profile</p>
+        </a>
+      </div>
+
+      <div class="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-2 text-sm text-slate-400">
+        <p>&copy; <span id="year">2026</span> Tuhalika Saha. All rights reserved.</p>
+        <p>Last updated: October 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Header elevation + scroll progress
+    const header = document.getElementById('siteHeader');
+    const bar = document.getElementById('scrollbar');
+    function onScroll() {
+      const y = window.scrollY;
+      header.classList.toggle('shadow-soft', y > 10);
+      header.classList.toggle('border-navy-100', y > 10);
+      header.classList.toggle('border-transparent', y <= 10);
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+    // Active nav link highlight
+    const links = document.querySelectorAll('.nav-link');
+    const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => s && spy.observe(s));
+  </script>
+</body>
+</html>
